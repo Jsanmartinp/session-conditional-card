@@ -1,7 +1,5 @@
-import { createCardElement } from "custom-card-helpers";
-
 class SessionConditionalCard extends HTMLElement {
-  setConfig(config) {
+  async setConfig(config) {
     if (!config || !config.content) {
       throw new Error("Debes definir el contenido de la tarjeta.");
     }
@@ -11,12 +9,12 @@ class SessionConditionalCard extends HTMLElement {
 
     const shouldShow = this._evaluateConditions(config.conditions || []);
     if (shouldShow) {
-      let cardConfig = config.content.card || config.content;
+      const helpers = await window.loadCardHelpers();
+      const cardConfig = config.content.card || config.content;
 
-      const card = createCardElement(cardConfig);
-      card.hass = this._hass; // si usas hass en la tarjeta
+      const card = helpers.createCardElement(cardConfig);
+      card.hass = this._hass;
       this.appendChild(card);
-
     }
   }
 
@@ -40,6 +38,13 @@ class SessionConditionalCard extends HTMLElement {
           return false;
       }
     });
+  }
+
+  set hass(hass) {
+    this._hass = hass;
+    if (this.firstChild) {
+      this.firstChild.hass = hass;
+    }
   }
 
   getCardSize() {
