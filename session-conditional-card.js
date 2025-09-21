@@ -1,3 +1,5 @@
+import { createCardElement } from "custom-card-helpers";
+
 class SessionConditionalCard extends HTMLElement {
   setConfig(config) {
     if (!config || !config.content) {
@@ -11,8 +13,8 @@ class SessionConditionalCard extends HTMLElement {
     if (shouldShow) {
       let cardConfig = config.content.card || config.content;
 
-      const card = window.document.createElement('hui-element');
-      card.setConfig(cardConfig);
+      const card = createCardElement(cardConfig);
+      card.hass = this._hass; // si usas hass en la tarjeta
       this.appendChild(card);
 
     }
