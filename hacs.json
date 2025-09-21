@@ -1,0 +1,12 @@
+{
+  "name": "Session Conditional Card",
+  "description": "Tarjeta Lovelace que permite visibilidad condicional por usuario y estado local del navegador.",
+  "version": "1.0.0",
+  "resources": [
+    {
+      "file": "session-conditional-card.js",
+      "type": "module"
+    }
+  ],
+  "category": "Lovelace"
+}
