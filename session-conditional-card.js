@@ -9,9 +9,12 @@ class SessionConditionalCard extends HTMLElement {
 
     const shouldShow = this._evaluateConditions(config.conditions || []);
     if (shouldShow) {
-      const card = document.createElement('ha-card');
-      card.innerHTML = config.content;
+      let cardConfig = config.content.card || config.content;
+
+      const card = window.document.createElement('hui-element');
+      card.setConfig(cardConfig);
       this.appendChild(card);
+
     }
   }
 
