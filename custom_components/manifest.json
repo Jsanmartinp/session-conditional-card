@@ -1,0 +1,16 @@
+{
+  "name": "Session Custom Card",
+  "description": "Tarjeta Lovelace para controlar visibilidad de tarjeta a nivel de sesion de usuario.",
+  "version": "1.0.0",
+  "slug": "mi-tarjeta",
+  "type": "session-conditional-card",
+  "url": "https://github.com/Jsanmartinp/session-conditional-card",
+  "authors": ["@Jsanmartinp"],
+  "resources": [
+    {
+      "type": "module",
+      "url": "/local/session-conditional-card.js"
+    }
+  ],
+  "codeowners": ["@Jsanmartinp"]
+}
